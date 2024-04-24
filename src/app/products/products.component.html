@@ -1,0 +1,18 @@
+<h2>Our Goods</h2>
+
+<div>
+  <ul>
+    @for (product of products; track product.title) {
+      <li>
+        <a routerLink="/products/{{product.id}}">
+          <section class="products-block">
+            <img class="products-img" src="{{product.image}}" alt="{{product.title}}">
+            <h2>{{ product.title }}</h2>
+          </section>
+        </a>
+      </li>
+    } @empty {
+      <li>There are no items</li>
+    }
+  </ul>
+</div>
