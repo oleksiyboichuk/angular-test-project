@@ -1,0 +1,20 @@
+<h2>Our Goods</h2>
+
+<div>
+  <ul>
+    @for (item of products; track item) {
+      <a routerLink="/products/{{item.id}}">
+        <section class="products-block">
+          <img [src]="item.image" [alt]="item.title" class="products-img">
+          <p>{{ item.title }}</p>
+          <div class="flex flex-row justify-between align-center">
+            <strong>{{ item.price }} $</strong>
+<!--            <button (click)="addToCard(item.id)" class="product-button">Buy</button>-->
+          </div>
+        </section>
+      </a>
+    }
+  </ul>
+</div>
+
+<router-outlet></router-outlet>

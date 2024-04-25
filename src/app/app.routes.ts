@@ -6,16 +6,15 @@ export const routes: Routes = [
     redirectTo: '/products',
     pathMatch: 'full',
   },
-
   {
     path: 'products',
-    loadComponent: () => import('./products/products.component')
+    loadComponent: () => import('./features/products/products.component')
       .then(c => c.ProductsComponent),
   },
 
   {
     path: 'products/:id',
-    loadComponent: () => import('./products/components/product/product.component')
+    loadComponent: () => import('./features/products/components/product/product.component')
       .then(c => c.ProductComponent),
   },
 ];

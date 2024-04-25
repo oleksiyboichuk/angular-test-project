@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsModel } from './models/products.model';
 import { ProductsService } from './services/products.service';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-post',
+  selector: 'app-product',
   standalone: true,
   imports: [
     CommonModule,
+    RouterOutlet,
     RouterLink,
-    NgOptimizedImage,
+    FormsModule,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
