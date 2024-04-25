@@ -1,20 +1,46 @@
 <h2>Our Goods</h2>
+<p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
 
 <div>
-  <ul>
-    @for (item of products; track item) {
-      <a routerLink="/products/{{item.id}}">
-        <section class="products-block">
-          <img [src]="item.image" [alt]="item.title" class="products-img">
-          <p>{{ item.title }}</p>
-          <div class="flex flex-row justify-between align-center">
-            <strong>{{ item.price }} $</strong>
-<!--            <button (click)="addToCard(item.id)" class="product-button">Buy</button>-->
+  <ul class="goods-field">
+    <p-dataView #dv [value]="products" [rows]="5" [paginator]="true">
+      <ng-template let-products pTemplate="list">
+        <div class="grid grid-gutter">
+          <div class="col-12">
+            @for (item of products; track item) {
+              <div class="products">
+                <a routerLink="/products/{{item.id}}">
+                  <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4"
+                       [ngClass]="{ 'border-top-1 surface-border': !true }">
+                    <img class="products-img w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
+                         [src]="item.image" [alt]="item.name"/>
+                    <div
+                      class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
+                      <div class="flex flex-column align-items-center sm:align-items-start gap-3">
+                        <div class="text-2xl font-bold text-900">{{ item.title }}</div>
+                        <p-rating [(ngModel)]="item.rating.rate" [readonly]="true" [cancel]="false"></p-rating>
+                        <div class="flex align-items-center gap-3">
+                                <span class="flex align-items-center gap-2">
+                                    <i class="pi pi-tag"></i>
+                                    <span class="font-semibold">{{ item.category }}</span>
+                                </span>
+                          <!--                      <p-tag [value]="item.inventoryStatus" [severity]="getSeverity(item)"></p-tag>-->
+                        </div>
+                      </div>
+                      <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
+                        <span class="text-2xl font-semibold">{{ '$' + item.price }}</span>
+                        <button pButton icon="pi pi-shopping-cart" class="md:align-self-end mb-2 p-button-rounded"
+                                [disabled]="item.inventoryStatus === 'OUTOFSTOCK'">Buy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            }
           </div>
-        </section>
-      </a>
-    }
+        </div>
+      </ng-template>
+    </p-dataView>
   </ul>
 </div>
-
-<router-outlet></router-outlet>

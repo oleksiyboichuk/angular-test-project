@@ -1,3 +1,21 @@
-<section>
-  <img src="{{product?.image}}" alt="">
+<div class="card flex justify-content-center">
+  <p-button label="Back" (click)="goBack()"></p-button>
+</div>
+
+<section class="product">
+  <div>
+    @if (product) {
+      <img class="product-img" [src]="product.image" [alt]="product.title">
+      <h1>{{ product.title }}</h1>
+      <p>Description: {{ product.description }}
+      <p>
+        <p-tag severity="success" [value]="product.category"></p-tag>
+      <h2>{{ product.price }}$</h2>
+      <button pButton pRipple label="Buy" class="p-button-success"></button>
+    } @else {
+      <h1>Loading...</h1>
+    }
+  </div>
 </section>
+
+

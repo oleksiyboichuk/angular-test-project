@@ -1,5 +1,12 @@
-ul {
+.products {
+  box-shadow: 5px 1px 2px lightgray;
+  border-radius: 4px;
+  max-width: 300px;
+  margin: 15px;
+  padding: 10px;
+}
 
+ul {
   li {
     list-style-type: none;
 
@@ -21,10 +28,10 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 300px;
+  min-width: 300px;
   box-shadow: 5px 5px 5px lightgray;
   border: 1px solid gray;
-  min-height: 300px;
+  min-height: 500px;
   border-radius: 5px;
   margin-bottom: 1rem;
   padding: 1rem 2rem;
@@ -60,5 +67,12 @@ a {
 }
 
 .products-img {
-  max-width: 128px;
+  max-width: 64px;
+}
+
+.bottom-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
